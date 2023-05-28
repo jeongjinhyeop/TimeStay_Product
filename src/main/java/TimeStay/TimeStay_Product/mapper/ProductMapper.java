@@ -1,12 +1,16 @@
 package TimeStay.TimeStay_Product.mapper;
 
+import TimeStay.TimeStay_Product.vo.ProductVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface ProductMapper {
-    @Select("select sysdate from dual")
-    public String getTime();
 
-    public String getTime2();
+
+    public List<ProductVO> test();
+
+
 }

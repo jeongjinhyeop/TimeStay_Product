@@ -5,13 +5,5 @@
         select pidx from product
     </select>
 
-    <select id="test1" resultType="TimeStay.TimeStay_Product.vo.ProductVO">
-        select pidx from product
-    </select>
-
-    <select id="getTime2" resultType="string">
-        select date from dual
-    </select>
-
 
 </mapper>
