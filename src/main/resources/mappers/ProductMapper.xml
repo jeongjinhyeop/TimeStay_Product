@@ -5,5 +5,14 @@
         select pidx from product
     </select>
 
-
+    <select id="ProductList" resultType="ProductVO" parameterType="int">
+        select *
+        from Product
+        WHERE Pcategoryidx=#{Pcategityidx} and pdelyn='N'
+    </select>
+    <select id="Pcategory" resultType="ProductVO" parameterType="int">
+        select Pcategory
+        from Product
+        WHERE Pcategoryidx=#{Pcategityidx} and pdelyn='N'
+    </select>
 </mapper>

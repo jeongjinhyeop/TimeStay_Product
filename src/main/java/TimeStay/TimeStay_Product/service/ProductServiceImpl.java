@@ -18,6 +18,15 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.test();
     }
 
+    @Override
+    public List<ProductVO> ProductList(int Pcategoryidx) {
+        return productDAO.ProductList(Pcategoryidx);
+    }
+
+    @Override
+    public ProductVO Pcategory(int Pcaategoryidx) {
+        return productDAO.Pcategory(Pcaategoryidx);
+    }
 
 
 }

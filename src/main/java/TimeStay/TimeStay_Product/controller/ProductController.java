@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
@@ -37,9 +38,13 @@ public class ProductController {
         return "index";
     }
     @RequestMapping("/product")
-    public  String product(Model model, HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
+    public  String product(Model model, int Pcategoryidx) {
+        ProductVO pcategory = productServiceImpl.Pcategory(Pcategoryidx);
+        System.out.println("Pcategoryidx:"+Pcategoryidx);
+        List<ProductVO> productList = productServiceImpl.ProductList(Pcategoryidx);//href로 Pcategoryidx만 넘겨주면될듯.. 만약 숫자가 두개 넘어갈땐? @Requestparam도 고려
+        System.out.println("productList:"+productList);
+        model.addAttribute("pcategory",pcategory);
+        model.addAttribute("productList",productList);
         return "Product";
     }
 
