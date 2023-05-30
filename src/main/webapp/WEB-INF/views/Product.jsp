@@ -17,9 +17,9 @@
 
 </head>
 <body>
-    <%@ include file="../views/navigationbar.jsp" %>
+    <jsp:include page ="../views/navigationbar.jsp"></jsp:include>
     <div class="content">
-        <h1>${pcategory.getPcategory()}</h1>
+        <h1>${pcategory.pcategory}</h1>
         <div class="product_kind_wrap"> 
           <div class="product_menu_top">
             <h2>분류 보기</h2>
@@ -33,20 +33,20 @@
                 <li>
                 <label><input type="checkbox" name="product_all" >전체</label>
                 </li>
-                <li><label><input id="pb1" type="checkbox" class="pb" name="product_b"  checked>${pcategory.getPcategory()}</label></li>
+                <li><label><input id="pb1" type="checkbox" class="pb" name="product_b"  checked>${pcategory.pcategory}</label></li>
               </ul>      
           </div>
         </div>
         <div class="product">
           <div class="product_b">
-            <p>${pcategory.getPcategory()}</p>
+            <p>${pcategory.pcategory}</p>
             <ul>
-              <%for(ProductVO vo : productList){ %>
+              <c:forEach var="VO" items="${productList}">
                 <li>
-                  <dl><a><img src="../../resources/images/<%=vo.getPimage() %>" alt=""></a></dl>
-                  <dt><%=vo.getPtitle() %></dt>     				 
+                  <dl><img src="../../resources/images/${VO.pimage}" alt=""></dl>
+                  <dt>${VO.ptitle}</dt><!--P소문자로  pidx==getPidx()-->
                 </li>
-                 <%}%>		
+              </c:forEach>
                  <li>
                  <dl></dl>
                  <dt></dt>     				 
@@ -60,7 +60,7 @@
           <div><a href="#"></a></div>
           <div></div>
         </div>
+        <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
         <%@ include file="../../resources/js/Product.js" %>
-        <%@ include file="../views/quickMenu.jsp" %>
 </body>
 </html>
