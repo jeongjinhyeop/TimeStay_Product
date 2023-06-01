@@ -6,6 +6,7 @@ import TimeStay.TimeStay_Product.vo.ProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service("ProductServiceImpl")
@@ -19,13 +20,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductVO> ProductList(int Pcategoryidx) {
-        return productDAO.ProductList(Pcategoryidx);
+    public List<ProductVO> ProductList(String Pcategory) {
+        return productDAO.ProductList(Pcategory);
     }
 
     @Override
-    public ProductVO Pcategory(int Pcaategoryidx) {
-        return productDAO.Pcategory(Pcaategoryidx);
+    public List<ProductVO> Pcategory(String Pcategory) {
+        return productDAO.Pcategory(Pcategory);
+    }
+
+
+    @Override
+    public List<ProductVO> PcategoryidxTest(int Pcategoryidx) {
+        return productDAO.PcategoryidxTest(Pcategoryidx);
     }
 
 

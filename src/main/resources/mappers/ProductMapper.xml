@@ -5,14 +5,19 @@
         select pidx from product
     </select>
 
-    <select id="ProductList" resultType="ProductVO" parameterType="int">
+    <select id="ProductList" resultType="ProductVO" parameterType="String">
         select *
         from Product
-        WHERE Pcategoryidx=#{Pcategityidx} and pdelyn='N'
+        WHERE Pcategory=#{Pcategory} and pdelyn='N'
     </select>
-    <select id="Pcategory" resultType="ProductVO" parameterType="int">
+    <select id="Pcategory" resultType="ProductVO" parameterType="String">
         select Pcategory
         from Product
-        WHERE Pcategoryidx=#{Pcategityidx} and pdelyn='N'
+        WHERE Pcategory=#{Pcategory} and pdelyn='N'
+    </select>
+    <select id="PcategoryidxTest" resultType="ProductVO" parameterType="int">
+        select *
+        from Product
+        WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N'
     </select>
 </mapper>

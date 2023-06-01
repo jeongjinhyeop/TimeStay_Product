@@ -2,8 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="TimeStay.TimeStay_Product.vo.ProductVO" %>
 <%@ include file="../views/global.jsp" %>
-<% List<ProductVO> productList = (List<ProductVO>)request.getAttribute("productList"); %>
-<% ProductVO pcategory = (ProductVO)request.getAttribute("pcategory"); %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,7 +17,7 @@
 <body>
     <jsp:include page ="../views/navigationbar.jsp"></jsp:include>
     <div class="content">
-        <h1>${pcategory.pcategory}</h1>
+        <h1>${pcategory[0].pcategory}</h1>
         <div class="product_kind_wrap"> 
           <div class="product_menu_top">
             <h2>분류 보기</h2>
@@ -33,27 +31,33 @@
                 <li>
                 <label><input type="checkbox" name="product_all" >전체</label>
                 </li>
-                <li><label><input id="pb1" type="checkbox" class="pb" name="product_b"  checked>${pcategory.pcategory}</label></li>
+                <li><label><input id="pb1" type="checkbox" class="pb" name="product_b"  checked>${pcategory[0].pcategory}</label></li>
+                <li><label><input type="checkbox" class="pb" name="product_s" onclick="clickFn2(this)">${pcategory[1].pcategory}</label></a></li>
               </ul>      
           </div>
         </div>
         <div class="product">
           <div class="product_b">
-            <p>${pcategory.pcategory}</p>
+            <p>${pcategory[0].pcategory}</p>
             <ul>
-              <c:forEach var="VO" items="${productList}">
+              <c:forEach var="pv" items="${pv[0]}">
                 <li>
-                  <dl><img src="../../resources/images/${VO.pimage}" alt=""></dl>
-                  <dt>${VO.ptitle}</dt><!--P소문자로  pidx==getPidx()-->
+                  <dl><img src="../../resources/images/${pv.pimage}" alt=""></dl>
+                  <dt>${pv.ptitle}</dt>
                 </li>
               </c:forEach>
-                 <li>
-                 <dl></dl>
-                 <dt></dt>     				 
-              </li>
-
             </ul>
           </div>
+          <div class="product_s">
+		        <p>${pcategory[1].pcategory}</p>
+		        <ul>
+              <c:forEach var="pv1" items="${pv[1]}">
+                <li>
+                  <dl><img src="../../resources/images/${pv1.pimage}" alt=""></dl>
+                  <dt>${pv1.ptitle}</dt>
+                </li>
+              </c:forEach>
+		        </ul>
         </div>
       </div>
            <div class="quickmenu">
