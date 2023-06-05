@@ -25,8 +25,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductVO> Pcategory(String Pcategory) {
-        return productDAO.Pcategory(Pcategory);
+    public List<String> Pcategory(int Pcategoryidx) {
+        return productDAO.Pcategory(Pcategoryidx);
     }
 
 

@@ -14,7 +14,7 @@ public interface ProductMapper {
 
     public List<ProductVO> test();
     public List<ProductVO> ProductList(String Pcategory);
-    public List<ProductVO> Pcategory(String Pcategory);
+    public List<String> Pcategory(int Pcategoryidx);
 
     public List<ProductVO> PcategoryidxTest(int Pcategoryidx);
 

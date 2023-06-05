@@ -37,29 +37,27 @@
           </div>
         </div>
         <div class="product">
-          <div class="product_b">
-            <p>${pcategory[0].pcategory}</p>
-            <ul>
-              <c:forEach var="pv" items="${pv[0]}">
-                <li>
-                  <dl><img src="../../resources/images/${pv.pimage}" alt=""></dl>
-                  <dt>${pv.ptitle}</dt>
-                </li>
-              </c:forEach>
-            </ul>
-          </div>
-          <div class="product_s">
-		        <p>${pcategory[1].pcategory}</p>
-		        <ul>
-              <c:forEach var="pv1" items="${pv[1]}">
-                <li>
-                  <dl><img src="../../resources/images/${pv1.pimage}" alt=""></dl>
-                  <dt>${pv1.ptitle}</dt>
-                </li>
-              </c:forEach>
-		        </ul>
+
+            <div class="product_b">
+
+              <ul>
+                <c:forEach var="aa" items="${pv}" varStatus="vs">
+                  <p>${str[vs.index]}</p>
+                  <p>${pv}</p>
+                  <li>
+                    <c:forEach var="bb" items="${aa}" varStatus="va">
+                    
+                      
+                      <dt>${bb.ptitle}</dt>
+                      <dl><img src="../../resources/images/${bb.pimage}" alt=""></dl>  
+                    </c:forEach>  
+                  </li>
+                </c:forEach>  
+              </ul>
+            </div>
+
+
         </div>
-      </div>
            <div class="quickmenu">
           <div><a href="#"></a></div>
           <div></div>

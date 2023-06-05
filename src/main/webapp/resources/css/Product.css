@@ -122,16 +122,7 @@
   .product_s{
     display: none;
   }   
-  /* .product_b li{
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-  }
-  .product_s li{
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-  } */
+ 
    .product dt{
     margin: 20px 0;
   } 

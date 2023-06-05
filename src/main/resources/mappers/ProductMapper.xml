@@ -10,14 +10,14 @@
         from Product
         WHERE Pcategory=#{Pcategory} and pdelyn='N'
     </select>
-    <select id="Pcategory" resultType="ProductVO" parameterType="String">
+    <select id="Pcategory" resultType="String" parameterType="int">
         select Pcategory
         from Product
-        WHERE Pcategory=#{Pcategory} and pdelyn='N'
+        WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N'
     </select>
     <select id="PcategoryidxTest" resultType="ProductVO" parameterType="int">
         select *
         from Product
-        WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N'
+        WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N' order by Pidx
     </select>
 </mapper>
