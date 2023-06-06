@@ -15,9 +15,9 @@
         from Product
         WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N'
     </select>
-    <select id="PcategoryidxTest" resultType="ProductVO" parameterType="int">
+    <select id="PcategoryidxTest" resultType="ProductVO" parameterType="ProductVO">
         select *
         from Product
-        WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N' order by Pidx
+        WHERE Pcategoryidx=#{Pcategoryidx} and Pcategory=#{Pcategory} and pdelyn='N' order by Pidx
     </select>
 </mapper>

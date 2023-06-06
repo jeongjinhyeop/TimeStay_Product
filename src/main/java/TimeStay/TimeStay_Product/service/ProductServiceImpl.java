@@ -31,8 +31,8 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<ProductVO> PcategoryidxTest(int Pcategoryidx) {
-        return productDAO.PcategoryidxTest(Pcategoryidx);
+    public List<ProductVO> PcategoryidxTest(int Pcategoryidx,String Pcategory) {
+        return productDAO.PcategoryidxTest(Pcategoryidx,Pcategory);
     }
 
 

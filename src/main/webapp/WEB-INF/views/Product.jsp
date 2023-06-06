@@ -29,32 +29,30 @@
             <hr class="hr">
               <ul>
                 <li>
-                <label><input type="checkbox" name="product_all" >전체</label>
+                <label><input type="checkbox" id="cboxAll" name="cboxAll"  >전체</label>
                 </li>
-                <li><label><input id="pb1" type="checkbox" class="pb" name="product_b"  checked>${pcategory[0].pcategory}</label></li>
-                <li><label><input type="checkbox" class="pb" name="product_s" onclick="clickFn2(this)">${pcategory[1].pcategory}</label></a></li>
+                <li><label><input type="checkbox" name="cbox" id="checkbox1" >${pcategory[0].pcategory}</label></li>
+                <li><label><input type="checkbox" name="cbox" id="checkbox2" >${pcategory[1].pcategory}</label></a></li>
               </ul>      
           </div>
         </div>
         <div class="product">
 
-            <div class="product_b">
-
-              <ul>
-                <c:forEach var="aa" items="${pv}" varStatus="vs">
-                  <p>${str[vs.index]}</p>
-                  <p>${pv}</p>
-                  <li>
-                    <c:forEach var="bb" items="${aa}" varStatus="va">
-                    
-                      
-                      <dt>${bb.ptitle}</dt>
-                      <dl><img src="../../resources/images/${bb.pimage}" alt=""></dl>  
+            
+              <c:forEach var="bakery" items="${pv}" varStatus="vs">
+              <div class="product_b">
+                <p>${str[vs.index]}</p>
+                <ul>
+                  <c:forEach var="item" items="${bakery}" varStatus="va">
+                      <li>
+                        <dl><img src="../../resources/images/${item.pimage}" alt=""></dl>  
+                        <dt>${item.ptitle}</dt>
+                      </li>
                     </c:forEach>  
-                  </li>
-                </c:forEach>  
-              </ul>
-            </div>
+                </ul>
+              </div>
+              </c:forEach>  
+            
 
 
         </div>
@@ -63,6 +61,7 @@
           <div></div>
         </div>
         <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
-        <%@ include file="../../resources/js/Product.js" %>
+        <%@ include file="../../resources/js/test.js" %>
+        
 </body>
 </html>

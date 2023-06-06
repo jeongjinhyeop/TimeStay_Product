@@ -11,6 +11,6 @@ public interface ProductService {
 
      List<String> Pcategory(int Pcategoryidx);
 
-     List<ProductVO> PcategoryidxTest(int Pcategoryidx);
+     List<ProductVO> PcategoryidxTest(int Pcategoryidx,String Pcategory);
 
 }

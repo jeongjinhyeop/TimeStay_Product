@@ -119,7 +119,7 @@
   transform: scale(1.1, 1.1);/* -webkit-transform: scale(1.1, 1.1); */
   }
   
-  .product_s{
+  .product_b:last-child{
     display: none;
   }   
  
