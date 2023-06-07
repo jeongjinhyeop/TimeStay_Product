@@ -48,9 +48,10 @@ public class ProductController {
 
             }
         }
-        String[] str = new String[2];
-        str[0]="빵";
-        str[1]="디저트";
+        String[] str = {"빵","디저트"};
+        System.out.println("str"+str[0]+str[1]);
+//        str[0]="빵";
+//        str[1]="디저트";
         System.out.println("pvtest"+pv.get(0));
         System.out.println("pvtest2"+pv.get(1));
         System.out.println("pvpv"+pv);

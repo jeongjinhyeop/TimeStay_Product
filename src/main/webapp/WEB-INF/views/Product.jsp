@@ -29,18 +29,16 @@
             <hr class="hr">
               <ul>
                 <li>
-                <label><input type="checkbox" id="cboxAll" name="cboxAll"  >전체</label>
+                <label><input type="checkbox" id="cboxAll" name="cboxAll"  checked>전체</label>
                 </li>
-                <li><label><input type="checkbox" name="cbox" id="checkbox1" >${pcategory[0].pcategory}</label></li>
-                <li><label><input type="checkbox" name="cbox" id="checkbox2" >${pcategory[1].pcategory}</label></a></li>
+                <li><label><input type="checkbox" name="cbox" id="checkbox1" value="0" checked>${pcategory[0].pcategory}</label></li>
+                <li><label><input type="checkbox" name="cbox" id="checkbox2" value="1" checked>${pcategory[1].pcategory}</label></a></li>
               </ul>      
           </div>
         </div>
         <div class="product">
-
-            
-              <c:forEach var="bakery" items="${pv}" varStatus="vs">
-              <div class="product_b">
+            <c:forEach var="bakery" items="${pv}" varStatus="vs" begin="0" step="1">
+              <div class="product_b" name="product_b">
                 <p>${str[vs.index]}</p>
                 <ul>
                   <c:forEach var="item" items="${bakery}" varStatus="va">
@@ -51,17 +49,14 @@
                     </c:forEach>  
                 </ul>
               </div>
-              </c:forEach>  
-            
-
-
+            </c:forEach>  
         </div>
            <div class="quickmenu">
           <div><a href="#"></a></div>
           <div></div>
         </div>
         <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
-        <%@ include file="../../resources/js/test.js" %>
+        <%@ include file="../../resources/js/Product.js" %>
         
 </body>
 </html>
