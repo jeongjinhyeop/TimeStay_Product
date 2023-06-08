@@ -10,14 +10,14 @@
         from Product
         WHERE Pcategory=#{Pcategory} and pdelyn='N'
     </select>
-    <select id="Pcategory" resultType="String" parameterType="int">
-        select Pcategory
-        from Product
-        WHERE Pcategoryidx=#{Pcategoryidx} and pdelyn='N'
+    <select id="Pcategory" resultType="String" parameterType="ProductVO">
+        select distinct b.Pcategory
+        from Product a, productcategory b
+        WHERE a.Pcategoryidx=#{Pcategoryidx}  and  a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
     </select>
     <select id="PcategoryidxTest" resultType="ProductVO" parameterType="ProductVO">
-        select *
-        from Product
-        WHERE Pcategoryidx=#{Pcategoryidx} and Pcategory=#{Pcategory} and pdelyn='N' order by Pidx
+        select a.*,b.pcategorySub
+        from Product a , Productcategory b
+        WHERE a.Pcategoryidx=#{Pcategoryidx} and b.pcategory=a.pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N' order by a.Pidx
     </select>
 </mapper>

@@ -13,5 +13,7 @@ public class ProductVO {
     private String Pimage;
     private String Pdelyn;
     private String Pcategory;
+    private String PcategorySub;
+
 
 }

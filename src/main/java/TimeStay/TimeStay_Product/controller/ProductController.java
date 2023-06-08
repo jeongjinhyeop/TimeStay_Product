@@ -38,29 +38,20 @@ public class ProductController {
         System.out.println("test456"+test);
         return "index";
     }
-    @RequestMapping("/product/{Pcategory}")
-    public  String product(Model model,@PathVariable String Pcategory) {
+    @RequestMapping("/product/{PcategorySub}")
+    public  String product(Model model,@PathVariable String PcategorySub) {
         ArrayList<Object> pv =new ArrayList<>();//hashmap key값으로 category받고 value값으로 object가져와도 될거같은데
         ArrayList<Object> cate =new ArrayList<>();
-        if (Pcategory.equals("bakery")) {
+        if (PcategorySub.equals("bakery")) {
             for (int i = 1; i < 3; i++) {
-                pv.add(productServiceImpl.PcategoryidxTest(i,Pcategory));
-
+                pv.add(productServiceImpl.PcategoryidxTest(i,PcategorySub));
+                cate.add(productServiceImpl.Pcategory(i,PcategorySub).get(0));
             }
         }
-        String[] str = {"빵","디저트"};
-        System.out.println("str"+str[0]+str[1]);
-//        str[0]="빵";
-//        str[1]="디저트";
-        System.out.println("pvtest"+pv.get(0));
-        System.out.println("pvtest2"+pv.get(1));
-        System.out.println("pvpv"+pv);
-       // List<ProductVO> pcategory = productServiceImpl.Pcategory();
-        List<ProductVO> productList = productServiceImpl.ProductList(Pcategory);//href로 Pcategoryidx만 넘겨주면될듯.. 만약 숫자가 두개 넘어갈땐? @Requestparam도 고려
-        model.addAttribute("str",str);
-       model.addAttribute("pv",pv);
+        System.out.println("cate1"+ cate);
+        model.addAttribute("pv",pv);
         model.addAttribute("cate",cate);
-        model.addAttribute("productList",productList);
+
         return "Product";
     }
 

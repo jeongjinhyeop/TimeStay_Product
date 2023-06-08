@@ -17,7 +17,7 @@
 <body>
     <jsp:include page ="../views/navigationbar.jsp"></jsp:include>
     <div class="content">
-        <h1>${pcategory[0].pcategory}</h1>
+        <h1></h1>
         <div class="product_kind_wrap"> 
           <div class="product_menu_top">
             <h2>분류 보기</h2>
@@ -31,15 +31,16 @@
                 <li>
                 <label><input type="checkbox" id="cboxAll" name="cboxAll"  checked>전체</label>
                 </li>
-                <li><label><input type="checkbox" name="cbox" id="checkbox1" value="0" checked>${pcategory[0].pcategory}</label></li>
-                <li><label><input type="checkbox" name="cbox" id="checkbox2" value="1" checked>${pcategory[1].pcategory}</label></a></li>
+                <c:forEach var="aa" items="${cate}" varStatus="pc" begin="0" step="1">
+                 <li><label><input type="checkbox"  name="${cate[pc.index]}" class="cbox" checked>${cate[pc.index]}</label></li>
+                </c:forEach>
               </ul>      
           </div>
         </div>
         <div class="product">
             <c:forEach var="bakery" items="${pv}" varStatus="vs" begin="0" step="1">
-              <div class="product_b" name="product_b">
-                <p>${str[vs.index]}</p>
+              <div class="product_b ${cate[vs.index]}" name="${cate[vs.index]}">
+                <p>${cate[vs.index]}</p>
                 <ul>
                   <c:forEach var="item" items="${bakery}" varStatus="va">
                       <li>
@@ -50,10 +51,6 @@
                 </ul>
               </div>
             </c:forEach>  
-        </div>
-           <div class="quickmenu">
-          <div><a href="#"></a></div>
-          <div></div>
         </div>
         <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
         <%@ include file="../../resources/js/Product.js" %>

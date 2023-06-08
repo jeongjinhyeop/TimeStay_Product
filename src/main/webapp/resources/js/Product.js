@@ -13,40 +13,44 @@ $(function (){
 		});
 {/* 체크박스 전체 버튼 */}
 $(function(){
+			
 			$("input[name=cboxAll]").change(function(){
-				if ($("input[name=cboxAll]").prop("checked"))
+					
+				if ($("input[name=cboxAll]").is(":checked")==true)
 					{
-						$("input[name='cbox']").prop("checked", true);
+						$("input[type=checkbox]").prop("checked", true);
 						$(".product_b").css("display","block");
+						
 					}
-				else
+				else if ($("input[name=cboxAll]").is(":checked")==false)
 					{
-						$("input[name='cbox']").prop("checked", false);
+						$("input[type=checkbox]").prop("checked", false);
 						$(".product_b").css("display","none");
 					}
 			})
 		});
 {/* 체크박스 카테고리 버튼 */}
-$(function(){
-	$("input[name='cbox']").change(function(){
-		var cbox = $("input[name='cbox']:checked");
+$(function(){ 
+	$("input[type=checkbox]").change(function(){
+		var name = $(this).attr('name');
+		var cbox = $("."+name);  
+		console.log(name) 
+		console.log(cbox)
+		console.log($("input[name='"+name+"']"))
 		var cboxAll = $("input[name='cboxAll']:checked");
-		for(var i =0; i<$("input[name='cbox']").length; i++){
-			if(cbox.length == 2){
-				$('input:checkbox[name="cboxAll"]').prop("checked",true)
-				$(".product_b").css("display","block");
-			}else if(cbox.length==1) {	
-				$('input:checkbox[name="cboxAll"]').prop("checked",false)
-				$(".product_b").css("display","none");
-				$($(".product_b")[cbox.val()]).css("display","block");
-			}else if(cbox.length==0){
-				$('input[type="checkbox"]').prop("checked",false)
-				$(".product_b").css("display","none");
-				}
-			}
-		})
-	});
-
-	
-         
+		if($("input[name='"+name+"']").is(":checked")==false){
+		$("."+name).css("display","none");
+		}else if($("input[name='"+name+"']").is(":checked")==true) {
+			console.log(22)
+		$("."+name).css("display","block");
+		}
+		var cbox =$(".cbox:checked")
+		if(cbox.length!=2){
+			$("input[name=cboxAll]").prop("checked",false)
+		}else {
+			$("input[name=cboxAll]").prop("checked",true)
+		}
+		
+	})
+})
 </script>

@@ -9,8 +9,8 @@ public interface ProductService {
      List<ProductVO> test();
      List<ProductVO> ProductList(String Pcategory);
 
-     List<String> Pcategory(int Pcategoryidx);
+     List<String> Pcategory(int Pcategoryidx,String PcategorySub);
 
-     List<ProductVO> PcategoryidxTest(int Pcategoryidx,String Pcategory);
+     List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub);
 
 }
