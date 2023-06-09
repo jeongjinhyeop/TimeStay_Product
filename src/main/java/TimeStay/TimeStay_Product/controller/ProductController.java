@@ -43,9 +43,11 @@ public class ProductController {
         ArrayList<Object> pv =new ArrayList<>();//hashmap key값으로 category받고 value값으로 object가져와도 될거같은데
         ArrayList<Object> cate =new ArrayList<>();
         if (PcategorySub.equals("bakery")) {
-            for (int i = 1; i < 3; i++) {
+            int len=productServiceImpl.PcateLength(PcategorySub).size();
+            for (int i = 1; i <=len; i++) {
                 pv.add(productServiceImpl.PcategoryidxTest(i,PcategorySub));
-                cate.add(productServiceImpl.Pcategory(i,PcategorySub).get(0));
+                cate.add(productServiceImpl.Pcategory(i,PcategorySub));
+
             }
         }
         System.out.println("cate1"+ cate);

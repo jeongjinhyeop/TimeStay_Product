@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ProductService {
      List<ProductVO> test();
-     List<ProductVO> ProductList(String Pcategory);
+     List<String> PcateLength(String PcategorySub);
 
-     List<String> Pcategory(int Pcategoryidx,String PcategorySub);
+     String Pcategory(int Pcategoryidx,String PcategorySub);
 
      List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub);
 

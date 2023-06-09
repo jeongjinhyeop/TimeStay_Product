@@ -20,12 +20,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductVO> ProductList(String Pcategory) {
-        return productDAO.ProductList(Pcategory);
+    public List<String> PcateLength(String PcategorySub) {
+        return productDAO.PcateLength(PcategorySub);
     }
 
+
     @Override
-    public List<String> Pcategory(int Pcategoryidx,String PcategorySub) {
+    public String Pcategory(int Pcategoryidx,String PcategorySub) {
         return productDAO.Pcategory(Pcategoryidx,PcategorySub);
     }
 
@@ -34,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub) {
         return productDAO.PcategoryidxTest(Pcategoryidx,PcategorySub);
     }
+
 
 
 }

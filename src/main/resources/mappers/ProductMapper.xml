@@ -5,10 +5,10 @@
         select pidx from product
     </select>
 
-    <select id="ProductList" resultType="ProductVO" parameterType="String">
-        select *
-        from Product
-        WHERE Pcategory=#{Pcategory} and pdelyn='N'
+    <select id="PcateLength" resultType="String" parameterType="String">
+        select distinct b.Pcategory
+        from Product a, productcategory b
+        WHERE a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
     </select>
     <select id="Pcategory" resultType="String" parameterType="ProductVO">
         select distinct b.Pcategory
