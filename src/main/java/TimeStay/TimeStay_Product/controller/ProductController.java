@@ -40,20 +40,14 @@ public class ProductController {
     }
     @RequestMapping("/product/{PcategorySub}")
     public  String product(Model model,@PathVariable String PcategorySub) {
-        ArrayList<Object> pv =new ArrayList<>();//hashmap key값으로 category받고 value값으로 object가져와도 될거같은데
-        ArrayList<Object> cate =new ArrayList<>();
-        if (PcategorySub.equals("bakery")) {
-            int len=productServiceImpl.PcateLength(PcategorySub).size();
-            for (int i = 1; i <=len; i++) {
-                pv.add(productServiceImpl.PcategoryidxTest(i,PcategorySub));
-                cate.add(productServiceImpl.Pcategory(i,PcategorySub));
-
-            }
+        ArrayList<Object> pv =new ArrayList<>();
+        int len=productServiceImpl.PcateLength(PcategorySub).size();
+        for (int i = 1; i <=len; i++) {
+            pv.add(productServiceImpl.PcategoryidxTest(i,PcategorySub));
         }
-        System.out.println("cate1"+ cate);
+        List<String> cate=productServiceImpl.Pcategory(PcategorySub);
         model.addAttribute("pv",pv);
         model.addAttribute("cate",cate);
-
         return "Product";
     }
 

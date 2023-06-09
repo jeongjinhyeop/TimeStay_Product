@@ -26,8 +26,8 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public String Pcategory(int Pcategoryidx,String PcategorySub) {
-        return productDAO.Pcategory(Pcategoryidx,PcategorySub);
+    public List<String> Pcategory(String PcategorySub) {
+        return productDAO.Pcategory(PcategorySub);
     }
 
 

@@ -9,7 +9,7 @@ public interface ProductService {
      List<ProductVO> test();
      List<String> PcateLength(String PcategorySub);
 
-     String Pcategory(int Pcategoryidx,String PcategorySub);
+     List<String> Pcategory(String PcategorySub);
 
      List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub);
 

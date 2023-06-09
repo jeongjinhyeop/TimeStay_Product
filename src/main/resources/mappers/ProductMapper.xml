@@ -10,10 +10,10 @@
         from Product a, productcategory b
         WHERE a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
     </select>
-    <select id="Pcategory" resultType="String" parameterType="ProductVO">
+    <select id="Pcategory" resultType="String" parameterType="String">
         select distinct b.Pcategory
         from Product a, productcategory b
-        WHERE a.Pcategoryidx=#{Pcategoryidx}  and  a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
+        WHERE  a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
     </select>
     <select id="PcategoryidxTest" resultType="ProductVO" parameterType="ProductVO">
         select a.*,b.pcategorySub
