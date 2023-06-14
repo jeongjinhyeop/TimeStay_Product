@@ -50,7 +50,7 @@
                       <input type="hidden" name="Ptitle" value="">
                       <div class="spinnerBox">
                         <div class="selected_option2" >
-                          <input id="Svol" name="Svol" type="number" value=1 min=1>
+                          <input id="Svol" name="Svol" type="number" value=1 min=1 max="10">
                         </div>
                       </div>  
                     </div>
@@ -59,9 +59,19 @@
                   <input type="hidden" name="totalSum" value="${pi.pprice}">
                   <input type="hidden" name="Pprice" value="${pi.pprice}">
                   <%@ include file="../../resources/js/ProductDetail.js" %>
-                  </div>          
+                  <div class="product_info2">
+                    <c:choose>
+                      <c:when test="${login==null }">	
+                      <a href="#"><div><img src="../../resources/images/shopping-cart.png" alt="장바구니"> 장바구니</div></a>
+                      <a href="#"><div><img src="../../resources/images/credit-card.png" alt="구매하기"> 구매하기</div></a>
+                      </c:when>
+                      <c:otherwise>
+                        <button type=button onclick="ShoppingCart()"><img src="../../resources/images/shopping-cart.png" alt="장바구니"> 장바구니</button>
+                      <button onclick="location.href='${pageContext.request.contextPath}/Shopping/ShoppingOrder2.do'"><img src="../../resources/images/credit-card.png" alt="구매하기">구매하기</button>
+                      </c:otherwise>
+                    </c:choose> 
+                  </div>         
                 </div>
-                
              </c:forEach>
 	      	  </form>  
            </div>
