@@ -11,5 +11,5 @@ public class ProductCategoryVO {
     private String Pcategory;
     private String PcategorySub;
     private int Pcategoryidx;
-
+    private String Ptitle;
 }

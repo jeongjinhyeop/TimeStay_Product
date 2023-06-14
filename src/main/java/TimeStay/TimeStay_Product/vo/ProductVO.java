@@ -14,6 +14,7 @@ public class ProductVO {
     private String Pdelyn;
     private String Pcategory;
     private String PcategorySub;
+    private int Pprice;
 
 
 }

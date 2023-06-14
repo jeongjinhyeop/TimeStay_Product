@@ -15,11 +15,6 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productDAO;
 
     @Override
-    public List<ProductVO> test() {
-        return productDAO.test();
-    }
-
-    @Override
     public List<String> PcateLength(String PcategorySub) {
         return productDAO.PcateLength(PcategorySub);
     }
@@ -36,6 +31,11 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.PcategoryidxTest(Pcategoryidx,PcategorySub);
     }
 
+    @Override
+    public List<ProductVO> ProductDetail(String Ptitle) {
+        return productDAO.ProductDetail(Ptitle);
+
+    }
 
 
 }
