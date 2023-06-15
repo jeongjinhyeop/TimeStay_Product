@@ -32,7 +32,7 @@
                     <ul>
                       <li><strong>${pi.ptitle}</strong></li>
                       <li style="border-bottom:1px solid #000; width:100%; padding-bottom: 10px;"></li>
-                      <li><p>유통기한:</p>  구매일로부터 몇일</li>
+                      <li><p>유통기한:</p> 상품에 표시</li>
                       <li><p>보관방법:</p> 냉장or 냉동</li>
                       <li><p>배송비:</p>  3000원</li>
                       <!-- <input type="hidden" name="delivery_fee" value=3000> -->
@@ -67,7 +67,7 @@
                       </c:when>
                       <c:otherwise>
                         <button type=button onclick="ShoppingCart()"><img src="../../resources/images/shopping-cart.png" alt="장바구니"> 장바구니</button>
-                      <button onclick="location.href='${pageContext.request.contextPath}/Shopping/ShoppingOrder2.do'"><img src="../../resources/images/credit-card.png" alt="구매하기">구매하기</button>
+                        <button onclick="location.href='${pageContext.request.contextPath}/Shopping/ShoppingOrder2.do'"><img src="../../resources/images/credit-card.png" alt="구매하기">구매하기</button>
                       </c:otherwise>
                     </c:choose> 
                   </div>         
@@ -75,12 +75,14 @@
              </c:forEach>
 	      	  </form>  
            </div>
+           
          </div>
 	      <!-- <div class="section2">
 	         
 	    </div> -->
     </main>
     <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
+    <jsp:include page ="../views/footer.jsp"></jsp:include>
     
 
 

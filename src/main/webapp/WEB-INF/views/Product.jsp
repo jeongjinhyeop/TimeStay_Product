@@ -15,8 +15,9 @@
 
 </head>
 <body>
-    <jsp:include page ="../views/navigationbar.jsp"></jsp:include>
-    <div class="content">
+    <main>
+      <jsp:include page ="../views/navigationbar.jsp"></jsp:include>
+      <div class="content">
         <h1></h1>
         <div class="product_kind_wrap"> 
           <div class="product_menu_top">
@@ -44,7 +45,7 @@
                 <ul>
                   <c:forEach var="item" items="${bakery}" varStatus="va">
                       <li>
-                        <dl><img src="../../resources/images/${item.pimage}" alt=""></dl>  
+                        <dl><a href="${pageContext.request.contextPath}/product/${item.pcategorySub}/${item.ptitle}"><img src="../../resources/images/${item.pimage}" alt=""></a></dl>  
                         <dt>${item.ptitle}</dt>
                       </li>
                     </c:forEach>  
@@ -52,8 +53,10 @@
               </div>
             </c:forEach>  
         </div>
-        <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
-        <%@ include file="../../resources/js/Product.js" %>
-        
+      </div>
+    </main>
+    <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
+    <jsp:include page ="../views/footer.jsp"></jsp:include>
+    <%@ include file="../../resources/js/Product.js" %>
 </body>
 </html>

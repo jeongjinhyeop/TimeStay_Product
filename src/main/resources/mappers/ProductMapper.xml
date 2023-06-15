@@ -21,4 +21,7 @@
         from Product a , Productcategory b
         WHERE b.pcategory=a.pcategory and a.Ptitle=#{Ptitle} and a.pdelyn='N'
     </select>
+    <insert id="Review" parameterType="ProductReviewVO">
+
+    </insert>
 </mapper>

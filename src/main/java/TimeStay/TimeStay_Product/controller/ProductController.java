@@ -37,6 +37,14 @@ public class ProductController {
     public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle) {
         List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
 
+        Map ratingOptions = new HashMap();
+        ratingOptions.put(0, "☆☆☆☆☆");
+        ratingOptions.put(1, "★☆☆☆☆");
+        ratingOptions.put(2, "★★☆☆☆");
+        ratingOptions.put(3, "★★★☆☆");
+        ratingOptions.put(4, "★★★★☆");
+        ratingOptions.put(5, "★★★★★");
+        model.addAttribute("ratingOptions", ratingOptions);
         model.addAttribute("pitem",pitem);
         return "ProductDetail";
     }
