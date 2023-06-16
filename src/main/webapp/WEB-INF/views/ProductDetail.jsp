@@ -11,6 +11,7 @@
     <title>TIME STAY</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="../../resources/css/ProductDetail.css" type="text/css"/>
+    <link rel="stylesheet" href="../../resources/css/ProductReview.css" type="text/css"/>
 
 
 </head>
@@ -77,12 +78,14 @@
            </div>
            
          </div>
-	      <!-- <div class="section2">
-	         
-	    </div> -->
+         <div class="section2">
+         <jsp:include page ="../views/ProductReview.jsp"></jsp:include>
+         </div>
+    </div>
     </main>
     <jsp:include page ="../views/quickMenu.jsp"></jsp:include>
     <jsp:include page ="../views/footer.jsp"></jsp:include>
+
     
 
 
