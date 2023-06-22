@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductReviewVO {
+public class Review {
     private int Pidx;
     private int Ridx;
     private int Rscore;

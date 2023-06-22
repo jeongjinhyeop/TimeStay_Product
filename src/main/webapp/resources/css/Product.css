@@ -1,4 +1,4 @@
-/* 제빵 */
+/* 상품 */
 .content{ 
     width: 70%;  margin: 100px auto 0; /*header height 100px 이라서*/
     display: flex;
@@ -124,132 +124,7 @@
    .product dt{
     margin: 20px 0;
   } 
-  /* 퀵메뉴 */
-  .quickmenu{
-    position: absolute;
-    outline: 2px solid #000;
-    width: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 5%;
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
-    transition: all ease 2s 0.2s;
-  }
-  .quickmenu div{
-    width: 60%;
-    height: 15%;
-    display: flex;
-    outline: 1px solid #000;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .quickmenu > div:last-child{
-    width: 100%;
-    text-align: center;
-    height: 53%;
-    outline: 1px solid #000;
-    flex-direction: column;
-    font-size: 0.7em;
-  }
-  
-  .quickmenu div:last-child div{
-    height: 100%;
-    outline: 1px solid #000;
-    width: 100%;
-    margin: 0;
-    
-  }
-  .quickmenu div img{
-    width: 100%;
-  }
-  
-  .quickmenu > div:nth-child(4){
-    width: 100%;
-    height: 7%;
-    font-size: 0.7em;
-    display: flex;
-    align-items: center;
-  }
-  
-  .recent_product{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-    
-  .recent_product>ul{
-    width: 60%;
-    height: 100%;
-    padding: 0;
-    list-style: none;
-  }
-  /* 퀵메뉴 */
-  .quickmenu{
-    position: absolute;
-    outline: 2px solid #000;
-    width: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 5%;
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
-    transition: all ease 2s 0.2s;
-  }
-  .quickmenu div{
-    width: 60%;
-    height: 15%;
-    display: flex;
-    outline: 1px solid #000;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .quickmenu > div:last-child{
-    width: 100%;
-    text-align: center;
-    height: 53%;
-    outline: 1px solid #000;
-    flex-direction: column;
-    font-size: 0.7em;
-  }
-  
-  .quickmenu div:last-child div{
-    height: 100%;
-    outline: 1px solid #000;
-    width: 100%;
-    margin: 0;
-    
-  }
-  .quickmenu div img{
-    width: 100%;
-  }
-  
-  .quickmenu > div:nth-child(4){
-    width: 100%;
-    height: 7%;
-    font-size: 0.7em;
-    display: flex;
-    align-items: center;
-  }
-  
-  .recent_product{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-    
-  .recent_product>ul{
-    width: 60%;
-    height: 100%;
-    padding: 0;
-    list-style: none;
-  }
-
-
+ 
 header a:hover{color:#666; }
 header a:hover::after{width:inherit; }
 header .sub{display:none; width:inherit;}
@@ -360,18 +235,4 @@ footer h2{font-size: 25px; font-weight: bold;}
     .navbar_menu>ul>li:nth-child(3) {margin-left:-10px;}  
     .location #map{width:400px; }  
 }
-/* @media screen and (max-height: 900px) {
-    #main_view .view .text{top:260px;}
-}
-@media screen and (max-height: 800px) {
-    #main_view .view .text{top:240px;}
-}
-@media screen and (max-height: 700px) {
-    #main_view .view .text{top:220px;}
-}
-@media screen and (max-height: 600px) {
-    #main_view .view .text{top:200px;}
-    #main_view {height:600px;}
-    #main_view article{height:600px;}
-}  */
 footer #footer1 {padding-right: 10vw;}

@@ -4,12 +4,13 @@ import java.util.*;
 import java.util.stream.DoubleStream;
 
 import TimeStay.TimeStay_Product.service.ProductServiceImpl;
+import TimeStay.TimeStay_Product.vo.ProductReviewVO;
 import TimeStay.TimeStay_Product.vo.ProductVO;
+import TimeStay.TimeStay_Product.vo.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,12 +34,19 @@ public class ProductController {
         model.addAttribute("cate",cate);
         return "Product";
     }
-    @RequestMapping("/product/{PcategorySub}/{Ptitle}")
-    public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle) {
+    @GetMapping("/product/{PcategorySub}/{Ptitle}")
+    public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,ProductReviewVO rvo) {
         List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
-
+        List<ProductReviewVO> review=productServiceImpl.ReviewList(pitem.get(0).getPidx());
+        model.addAttribute("review",review);
         model.addAttribute("pitem",pitem);
         return "ProductDetail";
+    }
+    @PostMapping("/product/{PcategorySub}/{Ptitle}")
+    public  String Review(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,@ModelAttribute ProductReviewVO review) {
+        int rvo=productServiceImpl.InsertReview(review);
+        model.addAttribute("review",review);
+        return "redirect:/product/{PcategorySub}/{Ptitle}";
     }
 
 }

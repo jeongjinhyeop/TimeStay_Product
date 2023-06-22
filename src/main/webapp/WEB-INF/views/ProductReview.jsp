@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="TimeStay.TimeStay_Product.vo.ProductVO" %>
 <%@ include file="../views/global.jsp" %>
 
@@ -39,23 +39,28 @@
             <div class="modal_body">
               <div class="modal_close"><button class="modal_close_btn"><img src="${pageContext.request.contextPath}/resources/images/cancle.png" alt=""></button></div>
               <h2>Review</h2>
-              <span class="star-input">
-                <span class="input">
-                    <input type="radio" name="Rscore" value="1" id="p1">
-                    <label id="p1" for="p1">1/5</label>
-                    <input type="radio" name="Rscore" value="2" id="p2">
-                    <label id="p2" for="p2">2/5</label>
-                    <input type="radio" name="Rscore" value="3" id="p3">
-                    <label id="p3" for="p3">3/5</label>
-                    <input type="radio" name="Rscore" value="4" id="p4">
-                    <label id="p4" for="p4">4/5</label>
-                    <input type="radio" name="Rscore" value="5" id="p5">
-                    <label id="p5" for="p5">5/5</label>
-                  </span>
-                  <output for="Rscore"><b>0/5</b></output>						
-              </span>
-              <textarea placeholder="리뷰를 작성해주세요"></textarea>
-              <button>작성</button>                  
+              <form:form name="ProductReviewVO" modelAttribute="ProductReviewVO" method="post">
+                <span class="star-input">
+                  <span class="input">
+                      <input type="radio" name="Rscore" value="1" id="p1">
+                      <label id="p1" for="p1">1/5</label>
+                      <input type="radio" name="Rscore" value="2" id="p2">
+                      <label id="p2" for="p2">2/5</label>
+                      <input type="radio" name="Rscore" value="3" id="p3">
+                      <label id="p3" for="p3">3/5</label>
+                      <input type="radio" name="Rscore" value="4" id="p4">
+                      <label id="p4" for="p4">4/5</label>
+                      <input type="radio" name="Rscore" value="5" id="p5">
+                      <label id="p5" for="p5">5/5</label>
+                    </span>
+                    <output for="Rscore"><b>0/5</b></output>						
+                </span>
+                <c:forEach var="p" items="${pitem}">
+                <td><input type="hidden" name="Pidx" value="${p.pidx}"></td> 
+                </c:forEach>
+                <textarea name="Rtext" placeholder="리뷰를 작성해주세요" value="1"></textarea>
+                <button>작성</button>                  
+              </form:form>
             </div>           
           </div>                    
           <button class="btn-open-popup">리뷰작성</button>
@@ -68,6 +73,15 @@
           <th style="width: 15%;">작성자</th>
           <th style="width: 15%;">작성일</th>
         </tr>
+        <c:forEach var="r" items="${review}">
+          <tr>
+              <td>${r.ridx}</td>
+              <td>${r.rtext}</td>
+              <td>${r.rscore}</td>
+              <td>${r.userid}</td>
+              <td>${r.rwdate}</td>
+          </tr>
+       </c:forEach>
       </table>
     </div>
     <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
