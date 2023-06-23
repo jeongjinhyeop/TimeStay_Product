@@ -134,7 +134,6 @@ class TabsAutomatic {
 		              $('.btn-open-popup').on("click",function(){
 		                    $('.modal').addClass('show')
 		                    $('body').css('overflow','hidden')
-		                  
 		                  })
 
 		                    $('.modal_close_btn').on("click",function(){
@@ -148,6 +147,27 @@ class TabsAutomatic {
 		                    }
 		                    })
 						});
+
+$(function(){
+		              $('.ReviewModify').on("click",function(){
+		                    $('.modal').addClass('show')
+		                    $('body').css('overflow','hidden')
+							console.log($(this).data('value'));
+							$('input[name=Ridx]').val($(this).data('value'))
+		                  })
+
+		                    $('.modal_close_btn').on("click",function(){
+		                      $('.modal').removeClass('show')
+		                      $('body').css('overflow','auto')
+		                    })
+		                    $('body').on('click',function(){
+		                      if($('modal').hasClass('show')){
+		                        $('.modal').removeClass('show')
+		                        $('body').css('overflow','auto')
+		                    }
+		                    })
+						});
+			
 
 //별점 
 						  $(function(){

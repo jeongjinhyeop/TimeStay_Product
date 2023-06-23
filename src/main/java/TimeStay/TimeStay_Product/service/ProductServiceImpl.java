@@ -48,6 +48,16 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.ReviewList(Pidx);
     }
 
+    @Override
+    public int delReview(ProductReviewVO dvo) {
+        return productDAO.delReview(dvo);
+    }
+
+    @Override
+    public String dateCheck(ProductReviewVO Rwdate) {
+        return productDAO.dateCheck(Rwdate);
+    }
+
 
 }
 

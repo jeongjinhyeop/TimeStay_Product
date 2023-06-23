@@ -43,10 +43,28 @@ public class ProductController {
         return "ProductDetail";
     }
     @PostMapping("/product/{PcategorySub}/{Ptitle}")
-    public  String Review(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,@ModelAttribute ProductReviewVO review) {
-        int rvo=productServiceImpl.InsertReview(review);
-        model.addAttribute("review",review);
+    public  String Review(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,
+                          @ModelAttribute("Insert") ProductReviewVO review ,int Ridx){
+        System.out.println("delReview"+review);
+        String date =productServiceImpl.dateCheck(review);
+        System.out.println("date"+date);
+        review.setRidx(Ridx);
+        System.out.println("delReview111"+review);
+        System.out.println("delReview111"+review.getRidx());
+        System.out.println("RRRRidx"+Ridx);
+
+
+        if (review.getRidx()==0) {
+            int del = productServiceImpl.delReview(review);
+            System.out.println("ininin");
+        }else if (review.getRidx()!=0){
+            int rvo=productServiceImpl.InsertReview(review);
+            System.out.println("deldel");
+        }else if (review.getRwdate()==null) {
+            System.out.println("upup");
+        }
         return "redirect:/product/{PcategorySub}/{Ptitle}";
     }
+
 
 }

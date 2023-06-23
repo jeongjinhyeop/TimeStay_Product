@@ -39,7 +39,7 @@
             <div class="modal_body">
               <div class="modal_close"><button class="modal_close_btn"><img src="${pageContext.request.contextPath}/resources/images/cancle.png" alt=""></button></div>
               <h2>Review</h2>
-              <form:form name="ProductReviewVO" modelAttribute="ProductReviewVO" method="post">
+              <form:form name="Insert" modelAttribute="Insert" method="post">
                 <span class="star-input">
                   <span class="input">
                       <input type="radio" name="Rscore" value="1" id="p1">
@@ -58,11 +58,12 @@
                 <c:forEach var="p" items="${pitem}">
                 <td><input type="hidden" name="Pidx" value="${p.pidx}"></td> 
                 </c:forEach>
-                <textarea name="Rtext" placeholder="리뷰를 작성해주세요" value="1"></textarea>
+                <input type="" name="Ridx" value="0">
+                <textarea name="Rtext" placeholder="리뷰를 작성해주세요"></textarea>
                 <button>작성</button>                  
               </form:form>
             </div>           
-          </div>                    
+          </div>            
           <button class="btn-open-popup">리뷰작성</button>
         </div>
       <table class="pd_review">
@@ -75,11 +76,15 @@
         </tr>
         <c:forEach var="r" items="${review}">
           <tr>
+            <form:form name="delete" modelAttribute="delete" method="post" >
               <td>${r.ridx}</td>
-              <td>${r.rtext}</td>
+              <td>${r.rtext}<button type="button" class="btn-open-popup ReviewModify" data-value="${r.ridx}">리뷰수정</button><button style="float: right;">리뷰삭제</button></td>
               <td>${r.rscore}</td>
               <td>${r.userid}</td>
               <td>${r.rwdate}</td>
+              <input type="hidden" name="Pidx" value="${r.pidx}">
+              <input type="hidden" name="Ridx" value="${r.ridx}">
+            </form:form>
           </tr>
        </c:forEach>
       </table>

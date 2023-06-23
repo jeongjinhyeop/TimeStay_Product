@@ -32,6 +32,14 @@
         </selectKey>
     </insert>
     <select id="ReviewList" resultType="ProductReviewVO" parameterType="Integer">
-        select * from ProductReview where Pidx=#{Pidx}
+        select * from ProductReview where Pidx=#{Pidx} order by Ridx desc
+    </select>
+    <delete id="delReview" parameterType="ProductReviewVO">
+        DELETE FROM ProductReview
+        WHERE
+        Ridx=#{Ridx} and Pidx=#{Pidx} and Userid='admin'
+    </delete>
+    <select id="dateCheck" resultType="String" parameterType="ProductReviewVO">
+        select Rwdate from ProductReview where Ridx=#{Ridx} and Pidx=#{Pidx} and Userid='admin'
     </select>
 </mapper>

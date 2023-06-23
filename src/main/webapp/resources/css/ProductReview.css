@@ -123,6 +123,7 @@
     width: 10%;
     height: 40px;
     border-radius: 3px;
+    float: right;
   }
 
   .modal {
