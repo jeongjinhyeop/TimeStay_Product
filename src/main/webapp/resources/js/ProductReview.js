@@ -148,8 +148,8 @@ class TabsAutomatic {
 		                    })
 						});
 
-$(function(){
-		              $('.ReviewModify').on("click",function(){
+				$(function(){
+		              $('.upReveiw').on("click",function(){
 		                    $('.modal').addClass('show')
 		                    $('body').css('overflow','hidden')
 							console.log($(this).data('value'));

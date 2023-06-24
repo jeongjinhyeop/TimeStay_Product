@@ -54,6 +54,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public int upReview(ProductReviewVO uvo) {
+        return productDAO.upReview(uvo);
+    }
+
+    @Override
     public String dateCheck(ProductReviewVO Rwdate) {
         return productDAO.dateCheck(Rwdate);
     }

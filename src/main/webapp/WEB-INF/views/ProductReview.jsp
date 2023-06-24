@@ -58,7 +58,7 @@
                 <c:forEach var="p" items="${pitem}">
                 <td><input type="hidden" name="Pidx" value="${p.pidx}"></td> 
                 </c:forEach>
-                <input type="" name="Ridx" value="0">
+                <input type="hidden" name="Ridx" value="0">
                 <textarea name="Rtext" placeholder="리뷰를 작성해주세요"></textarea>
                 <button>작성</button>                  
               </form:form>
@@ -78,7 +78,11 @@
           <tr>
             <form:form name="delete" modelAttribute="delete" method="post" >
               <td>${r.ridx}</td>
-              <td>${r.rtext}<button type="button" class="btn-open-popup ReviewModify" data-value="${r.ridx}">리뷰수정</button><button style="float: right;">리뷰삭제</button></td>
+              <td>
+                ${r.rtext}
+                <button class="delReview">리뷰삭제</button>
+                <button type="button" class="btn-open-popup upReveiw" data-value="${r.ridx}">리뷰수정</button>
+              </td>
               <td>${r.rscore}</td>
               <td>${r.userid}</td>
               <td>${r.rwdate}</td>

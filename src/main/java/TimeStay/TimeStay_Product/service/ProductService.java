@@ -20,6 +20,7 @@ public interface ProductService {
 
      List<ProductReviewVO> ReviewList(int Pidx);
      int delReview(ProductReviewVO dvo);
+     int upReview(ProductReviewVO uvo);
      public String dateCheck(ProductReviewVO Rwdate);
 
 }

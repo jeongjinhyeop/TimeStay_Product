@@ -20,5 +20,6 @@ public interface ProductMapper {
     public int InsertReview(ProductReviewVO rvo);
     public List<ProductReviewVO> ReviewList(int Pidx);
     public int delReview(ProductReviewVO dvo);
+    public int upReview(ProductReviewVO uvo);
     public String dateCheck(ProductReviewVO Rwdate);
 }

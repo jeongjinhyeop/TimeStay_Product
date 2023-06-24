@@ -42,4 +42,11 @@
     <select id="dateCheck" resultType="String" parameterType="ProductReviewVO">
         select Rwdate from ProductReview where Ridx=#{Ridx} and Pidx=#{Pidx} and Userid='admin'
     </select>
+    <update id="upReview" parameterType="ProductReviewVO">
+        update  ProductReview
+        set
+        Rtext=#{Rtext},Rscore=#{Rscore} ,Rwdate=sysdate
+        where
+        Ridx=#{Ridx} and Pidx=#{Pidx}
+    </update>
 </mapper>

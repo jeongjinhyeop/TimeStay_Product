@@ -124,6 +124,20 @@
     height: 40px;
     border-radius: 3px;
     float: right;
+    margin-right: 1%;
+  }
+  .upReveiw{
+    width: 15%;
+  }
+  .delReview{
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    background: gray;
+    width: 15%;
+    height: 40px;
+    border-radius: 3px;
+    float: right;
   }
 
   .modal {
