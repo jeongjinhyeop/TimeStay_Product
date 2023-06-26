@@ -22,10 +22,7 @@ public class ProductController {
     @Autowired
     private final ProductServiceImpl productServiceImpl;
 
-    @RequestMapping("/")
-    public String index (Model model){
-        return "index";
-    }
+
     @RequestMapping("/product/{PcategorySub}")
     public  String product(Model model,@PathVariable String PcategorySub) {
         ArrayList<Object> pv =new ArrayList<>();

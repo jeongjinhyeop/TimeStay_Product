@@ -11,9 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% for(ProductVO vo : test){%>
-   <h1>1. <%= vo.getPidx()%></h1>
-   <%}%>
 <h1>ㄱㄱ</h1>
 </body>
 </html>
