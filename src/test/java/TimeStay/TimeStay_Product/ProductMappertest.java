@@ -17,7 +17,7 @@ public class ProductMappertest {
 
     @Test
     public void testGetTime() {
-        log.info("productMapper class name: " + productMapper.getClass().getName());
+     //   log.info("productMapper class name: " + productMapper.getClass().getName());
 
 
     }
