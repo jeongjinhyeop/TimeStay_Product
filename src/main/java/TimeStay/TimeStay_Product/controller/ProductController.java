@@ -22,11 +22,11 @@ public class ProductController {
     @Autowired
     private final ProductServiceImpl productServiceImpl;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index (Model model){
         return "index";
     }
-    @RequestMapping("/product/{PcategorySub}")
+    @GetMapping("/product{PcategorySub}")
     public  String product(Model model,@PathVariable String PcategorySub) {
         ArrayList<Object> pv =new ArrayList<>();
         int len=productServiceImpl.PcateLength(PcategorySub).size();
@@ -38,7 +38,7 @@ public class ProductController {
         model.addAttribute("cate",cate);
         return "Product";
     }
-    @GetMapping("/product/{PcategorySub}/{Ptitle}")
+    @GetMapping("/product{PcategorySub}/{Ptitle}")
     public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,ProductReviewVO rvo) {
         List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
         List<ProductReviewVO> review=productServiceImpl.ReviewList(pitem.get(0).getPidx());
@@ -46,7 +46,7 @@ public class ProductController {
         model.addAttribute("pitem",pitem);
         return "ProductDetail";
     }
-    @PostMapping("/product/{PcategorySub}/{Ptitle}")
+    @PostMapping("/product{PcategorySub}/{Ptitle}")
     public  String Review(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,
                           @ModelAttribute("Insert") ProductReviewVO review){
         System.out.println("delReview"+review);
@@ -62,7 +62,7 @@ public class ProductController {
         }
 
 
-        return "redirect:Product/{PcategorySub}/{Ptitle}";
+        return "redirect:Product{PcategorySub}/{Ptitle}";
     }
 
 
