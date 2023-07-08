@@ -45,7 +45,7 @@
                 <ul>
                   <c:forEach var="item" items="${bakery}" varStatus="va">
                       <li>
-                        <dl><a href="${pageContext.request.contextPath}/product${item.pcategorySub}/${item.ptitle}"><img src="../../resources/images/${item.pimage}" alt=""></a></dl>  
+                        <dl><a href="${pageContext.request.contextPath}/products/${item.pcategorySub}/${item.ptitle}"><img src="../../resources/images/${item.pimage}" alt=""></a></dl>  
                         <dt>${item.ptitle}</dt>
                       </li>
                     </c:forEach>  

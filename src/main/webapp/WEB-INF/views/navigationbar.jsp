@@ -59,21 +59,21 @@
             </div>          
         </nav>    
          
-          <c:if test= "${login==null}">
-              <ul class="navbar_links">
-                 <li><a href="#" onclick="return false;" id="modal_btn">로그인</a></li>	    
-                <li><a href="<%=request.getContextPath()%>/Member/Login.do">장바구니</a></li>
-                <li><a href="<%=request.getContextPath()%>/Board/BoardFaq.do">고객센터</a></li>
-            </ul>
-        </c:if>
-         <c:if test ="${login!=null}">
-            <ul class="navbar_links" style="width:330px;">
-                <li><a href="<%=request.getContextPath()%>/Member/logout.do" style="padding:0 4px">로그아웃</a></li>
-                <li><a href="<%=request.getContextPath()%>/MyPage/member_Modify.do?Mid=${Mid}" style="padding:0 4px">마이페이지</a></li>
-                <li><a href="<%=request.getContextPath()%>/Shopping/ShoppingCart.do" style="padding:0 4px">장바구니</a></li>
-                <li><a href="<%=request.getContextPath()%>/Board/BoardFaq.do" style="padding:0 4px">고객센터</a></li>
-            </ul>
-          </c:if>   
+        <c:if test= "${UMAIL==null}">
+            <ul class="navbar_links">
+               <li><a href="<%= BASE_URL %>user/login">로그인</a></li>	    
+              <li><a href="*">장바구니</a></li>
+              <li><a href="*">고객센터</a></li>
+          </ul>
+      </c:if>
+       <c:if test ="${UMAIL!=null}">
+          <ul class="navbar_links" style="width:330px;">
+              <li><a href="<%= BASE_URL %>user/logout" style="padding:0 4px">로그아웃</a></li>
+              <li><a href="*" style="padding:0 4px">마이페이지</a></li>
+              <li><a href="*" style="padding:0 4px">장바구니</a></li>
+              <li><a href="*" style="padding:0 4px">고객센터</a></li>
+          </ul>
+        </c:if>  
     
     </header>  
     
