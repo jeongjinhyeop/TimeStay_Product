@@ -67,32 +67,35 @@
           <button class="btn-open-popup">리뷰작성</button>
         </div>
       <table class="pd_review">
-        <tr>
-          <th style="width: 10%;">글 번호</th>
-          <th style="width: 45%;">내용</th>
-          <th style="width: 15%;">평점</th>
-          <th style="width: 15%;">작성자</th>
-          <th style="width: 15%;">작성일</th>
-        </tr>
-        <c:forEach var="r" items="${review}">
+        <tbody class="table_body">
           <tr>
-            <form:form name="delete" modelAttribute="delete" method="post" >
-              <td>${r.ridx}</td>
-              <td>
-                ${r.rtext}
-                <button class="delReview">리뷰삭제</button>
-                <button type="button" class="btn-open-popup upReveiw" data-value="${r.ridx}">리뷰수정</button>
-              </td>
-              <td>${r.rscore}</td>
-              <td>${r.userid}</td>
-              <td>${r.rwdate}</td>
-              <input type="hidden" name="Pidx" value="${r.pidx}">
-              <input type="hidden" name="Ridx" value="${r.ridx}">
-            </form:form>
+            <th style="width: 10%;">글 번호</th>
+            <th style="width: 45%;">내용</th>
+            <th style="width: 15%;">평점</th>
+            <th style="width: 15%;">작성자</th>
+            <th style="width: 15%;">작성일</th>
           </tr>
-       </c:forEach>
+            <c:forEach var="r" items="${review}">
+              <tr>
+                <form:form name="delete" modelAttribute="delete" method="post" >
+                  <td name="ridx">${r.ridx}</td>
+                  <td name="rtext">
+                    ${r.rtext}
+                    <button class="delReview">리뷰삭제</button>
+                    <button type="button" class="btn-open-popup upReveiw" data-value="${r.ridx}">리뷰수정</button>
+                  </td>
+                  <td name="rscore">${r.rscore}</td>
+                  <td name="userid">${r.userid}</td>
+                  <td name="rwdate">${r.rwdate}</td>
+                  <input type="hidden" name="Pidx" value="${r.pidx}">
+                  <input type="hidden" name="Ridx" value="${r.ridx}">
+                </form:form>
+              </tr>
+          </c:forEach>
+        </tbody>
       </table>
     </div>
+    <input type="hidden" id="P" value="${Ptitle}">
     <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
     <h3>반품/환불</h3>
     <h3>교환 및 환불 안내</h3>
@@ -104,6 +107,35 @@
     </div>
   </div>
   <%@ include file="../../resources/js/ProductReview.js" %>
+  <script>
+    var title=$('#P').val();
+    $(function ReviewList(){	
+			$.ajax({
+				type:"Get",//요청만 다르게 url는 똑같음
+        contentType:'application/json;charset=utf-8',
+				url:"${pageContext.request.contextPath}/products/Reviews/"+title,	
+        error:function(error,status,msg){
+			  alert("상태코드 " + status + "에러메시지" + msg );
+		    },
+				success:function(data){		
+          str = '<TR>'; 
+                        $.each(data , function(i){
+                            str += '<TD>' + data[i].ridx + '</TD>' +
+                            	      '<TD>' + data[i].rtext +
+                                      '<button type="button" class="btn-open-popup upReveiw">'+'리뷰수정'+'</button>'+ 
+                                      '<button type="button" class="btn-open-popup upReveiw">'+'리뷰삭제'+'</button>'+
+                                      '</TD>' +
+                                    '<TD>' + data[i].rscore + '</TD>' +
+                                    '<TD>' + data[i].userid + '</TD>' +
+                                   '<TD>' + data[i].rwdate + '</TD>';
+                            str += '</TR>';
+                        });
+                    $('.table_body').append(str);
+				}
+			});//ajax
+		});//click	
+    console.log(title)
+  </script>
 </body>
 
 </html>

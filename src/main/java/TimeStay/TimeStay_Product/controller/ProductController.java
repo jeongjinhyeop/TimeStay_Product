@@ -22,10 +22,6 @@ public class ProductController {
     @Autowired
     private final ProductServiceImpl productServiceImpl;
 
-//    @GetMapping("/")
-//    public String index (Model model){
-//        return "index";
-//    }
     @GetMapping("/{PcategorySub}")
     public  String product(Model model,@PathVariable String PcategorySub) {
         ArrayList<Object> pv =new ArrayList<>();
@@ -46,19 +42,25 @@ public class ProductController {
         model.addAttribute("pitem",pitem);
         return "ProductDetail";
     }
-    @PostMapping("/{PcategorySub}/{Ptitle}")
-    public  String Review(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,
-                          @ModelAttribute("Insert") ProductReviewVO review){
-        if (review.getRidx()!=0&& review.getRtext()!=null){
-            productServiceImpl.upReview(review);
-        }else if (review.getRidx()!=0 ){
-            productServiceImpl.delReview(review);
-        }else {
-            productServiceImpl.InsertReview(review);
-        }
-        return "redirect:/products/{PcategorySub}/{Ptitle}";
+//    @PostMapping("/{PcategorySub}/{Ptitle}")
+//    public  String Review(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,
+//                          @ModelAttribute("Insert") ProductReviewVO review){
+//        if (review.getRidx()!=0&& review.getRtext()!=null){
+//            productServiceImpl.upReview(review);
+//        }else if (review.getRidx()!=0 ){
+//            productServiceImpl.delReview(review);
+//        }else {
+//            productServiceImpl.InsertReview(review);
+//        }
+//        return "redirect:/products/{PcategorySub}/{Ptitle}";
+//    }
+
+    @GetMapping("/Reviews/{Ptitle}")
+    @ResponseBody
+    public List<ProductReviewVO> ReviewList(@PathVariable String Ptitle){
+        List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
+        List<ProductReviewVO> review=productServiceImpl.ReviewList(pitem.get(0).getPidx());
+        return productServiceImpl.ReviewList(pitem.get(0).getPidx());
     }
-
-
 
 }

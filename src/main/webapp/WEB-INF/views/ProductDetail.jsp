@@ -31,7 +31,7 @@
                 <div class="product_info">
                   <div class="product_info1">
                     <ul>
-                      <li><strong>${pi.ptitle}</strong></li>
+                      <li><strong id="PTITLE" value="${Ptitle}">${pi.ptitle}</strong></li>
                       <li style="border-bottom:1px solid #000; width:100%; padding-bottom: 10px;"></li>
                       <li><p>유통기한:</p> 상품에 표시</li>
                       <li><p>보관방법:</p> 냉장or 냉동</li>
