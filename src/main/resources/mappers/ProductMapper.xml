@@ -24,7 +24,7 @@
     <insert id="InsertReview" parameterType="ProductReviewVO">
             <![CDATA[
 	        INSERT INTO ProductReview VALUES(
-				Review_seq.nextval,'admin',#{Pidx},#{Rtext},#{Rscore}, 'N','xx',sysdate,null)
+				Review_seq.nextval,#{Userid},#{Pidx},#{Rtext},#{Rscore}, 'N','xx',sysdate,null)
 
 	        ]]>
         <selectKey order= "AFTER" resultType="integer" keyProperty="Ridx">

@@ -39,7 +39,7 @@
             <div class="modal_body">
               <div class="modal_close"><button class="modal_close_btn"><img src="${pageContext.request.contextPath}/resources/images/cancle.png" alt=""></button></div>
               <h2>Review</h2>
-              <form:form name="Insert" modelAttribute="Insert" method="post">
+              <form id="insert"  >
                 <span class="star-input">
                   <span class="input">
                       <input type="radio" name="Rscore" value="1" id="p1">
@@ -56,12 +56,12 @@
                     <output for="Rscore"><b>0/5</b></output>						
                 </span>
                 <c:forEach var="p" items="${pitem}">
-                <td><input type="hidden" name="Pidx" value="${p.pidx}"></td> 
+                <td><input name="Pidx" value="${p.pidx}"></td> 
                 </c:forEach>
-                <input type="hidden" name="Ridx" value="0">
+                <input  name="Ridx" value="0">
                 <textarea name="Rtext" placeholder="리뷰를 작성해주세요"></textarea>
-                <button>작성</button>                  
-              </form:form>
+                <button type="button" id="iReview">작성</button>                  
+              </form>
             </div>           
           </div>            
           <button class="btn-open-popup">리뷰작성</button>
@@ -69,7 +69,7 @@
       <table class="pd_review">
         <tbody class="table_body">
           <tr>
-            <th style="width: 10%;">글 번호</th>
+            <th style="width: 10%;" value="${Umail}">글 번호</th>
             <th style="width: 45%;">내용</th>
             <th style="width: 15%;">평점</th>
             <th style="width: 15%;">작성자</th>
@@ -105,11 +105,14 @@
     <h3>교환/환불 정책</h3>
     <div></div>
     </div>
+    <p>${Umail}</p>
   </div>
   <%@ include file="../../resources/js/ProductReview.js" %>
   <script>
     var title=$('#P').val();
-    $(function ReviewList(){	
+    var id='${Umail}';
+    console.log(id);
+    $(document).ready(function (){	
 			$.ajax({
 				type:"Get",//요청만 다르게 url는 똑같음
         contentType:'application/json;charset=utf-8',
@@ -119,22 +122,41 @@
 		    },
 				success:function(data){		
           str = '<TR>'; 
-                        $.each(data , function(i){
-                            str += '<TD>' + data[i].ridx + '</TD>' +
-                            	      '<TD>' + data[i].rtext +
-                                      '<button type="button" class="btn-open-popup upReveiw">'+'리뷰수정'+'</button>'+ 
-                                      '<button type="button" class="btn-open-popup upReveiw">'+'리뷰삭제'+'</button>'+
-                                      '</TD>' +
-                                    '<TD>' + data[i].rscore + '</TD>' +
-                                    '<TD>' + data[i].userid + '</TD>' +
-                                   '<TD>' + data[i].rwdate + '</TD>';
-                            str += '</TR>';
-                        });
-                    $('.table_body').append(str);
+            $.each(data , function(i){
+                str += '<TD>' + data[i].ridx + '</TD>' +
+                        '<TD>' + data[i].rtext +
+                          '<button type="button" class="btn-open-popup uReveiw" value='+ data[i].ridx +'>'+'리뷰수정'+'</button>'+ 
+                          '<button type="button" class="dReview" value='+ data[i].ridx +'>'+'리뷰삭제'+'</button>'+
+                          '</TD>' +
+                        '<TD>' + data[i].rscore + '</TD>' +
+                        '<TD>' + data[i].userid + '</TD>' +
+                        '<TD>' + data[i].rwdate + '</TD>';
+                str += '</TR>';
+            });
+          $('.table_body').append(str);
 				}
 			});//ajax
-		});//click	
-    console.log(title)
+		});//click
+    var title=$('#P').val();
+    var id='${Umail}';
+    $('#iReview').click(function(){	
+    
+			$.ajax({
+				type:"post",//요청만 다르게 url는 똑같음
+        contentType:'application/json;charset=utf-8',
+				url:"${pageContext.request.contextPath}/products/Reviews/"+id,
+        data:	$("#insert").serialize(),
+        error:function(error,status,msg){
+			  alert("상태코드 " + status + "에러메시지" + msg );
+        
+		    },
+				success:function(data){
+          alert("Review insert")		
+          location.reload();
+				}
+			});//ajax
+		});//click
+    
   </script>
 </body>
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -35,10 +36,11 @@ public class ProductController {
         return "Product";
     }
     @GetMapping("/{PcategorySub}/{Ptitle}")
-    public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,ProductReviewVO rvo) {
+    public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,ProductReviewVO rvo
+                                  ,HttpSession session) {
         List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
-        List<ProductReviewVO> review=productServiceImpl.ReviewList(pitem.get(0).getPidx());
-        model.addAttribute("review",review);
+        String id =(String)session.getAttribute("UMAIL");
+        model.addAttribute("Umail",id);
         model.addAttribute("pitem",pitem);
         return "ProductDetail";
     }
@@ -59,8 +61,19 @@ public class ProductController {
     @ResponseBody
     public List<ProductReviewVO> ReviewList(@PathVariable String Ptitle){
         List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
-        List<ProductReviewVO> review=productServiceImpl.ReviewList(pitem.get(0).getPidx());
         return productServiceImpl.ReviewList(pitem.get(0).getPidx());
+    }
+    @PostMapping("/Reviews/{id}")
+    @ResponseBody
+    public int iReview(@PathVariable String id, ProductReviewVO review){
+        review.setUserid(id);
+        review.setPidx(4);
+        review.setRscore(4);
+        review.setRtext("123");
+        review.setRdelyn("N");
+        System.out.println(review);
+
+        return productServiceImpl.InsertReview(review);
     }
 
 }
