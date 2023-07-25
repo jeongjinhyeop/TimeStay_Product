@@ -39,7 +39,7 @@
             <div class="modal_body">
               <div class="modal_close"><button class="modal_close_btn"><img src="${pageContext.request.contextPath}/resources/images/cancle.png" alt=""></button></div>
               <h2>Review</h2>
-              <form id="insert"  >
+              <form name="insert" action="/Reviews/{Umail}">
                 <span class="star-input">
                   <span class="input">
                       <input type="radio" name="Rscore" value="1" id="p1">
@@ -60,7 +60,7 @@
                 </c:forEach>
                 <input  name="Ridx" value="0">
                 <textarea name="Rtext" placeholder="리뷰를 작성해주세요"></textarea>
-                <button type="button" id="iReview">작성</button>                  
+                <button type="button" id="insertReview">작성</button>                  
               </form>
             </div>           
           </div>            
@@ -139,13 +139,13 @@
 		});//click
     var title=$('#P').val();
     var id='${Umail}';
-    $('#iReview').click(function(){	
+    $('#insertReview').click(function(){	
     
 			$.ajax({
 				type:"post",//요청만 다르게 url는 똑같음
         contentType:'application/json;charset=utf-8',
 				url:"${pageContext.request.contextPath}/products/Reviews/"+id,
-        data:	$("#insert").serialize(),
+        data:	JSON.stringify($("form[name=insert]").serialize()),
         error:function(error,status,msg){
 			  alert("상태코드 " + status + "에러메시지" + msg );
         
