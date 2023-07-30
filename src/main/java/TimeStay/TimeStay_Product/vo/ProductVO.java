@@ -6,15 +6,15 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductVO {
-    private int Pidx;
-    private int Pcategoryidx;
-    private String Ptitle;
-    private String Pcontent;
-    private String Pimage;
-    private String Pdelyn;
-    private String Pcategory;
-    private String PcategorySub;
-    private int Pprice;
+    private int pidx;
+    private int pcategoryidx;
+    private String ptitle;
+    private String pcontent;
+    private String pimage;
+    private String pdelyn;
+    private String pcategory;
+    private String pcategorySub;
+    private int pprice;
 
 
 }

@@ -16,25 +16,25 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productDAO;
 
     @Override
-    public List<String> PcateLength(String PcategorySub) {
-        return productDAO.PcateLength(PcategorySub);
+    public List<String> PcateLength(String pcategorySub) {
+        return productDAO.PcateLength(pcategorySub);
     }
 
 
     @Override
-    public List<String> Pcategory(String PcategorySub) {
-        return productDAO.Pcategory(PcategorySub);
+    public List<String> Pcategory(String pcategorySub) {
+        return productDAO.Pcategory(pcategorySub);
     }
 
 
     @Override
-    public List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub) {
-        return productDAO.PcategoryidxTest(Pcategoryidx,PcategorySub);
+    public List<ProductVO> PcategoryidxTest(int pcategoryidx,String pcategorySub) {
+        return productDAO.PcategoryidxTest(pcategoryidx,pcategorySub);
     }
 
     @Override
-    public List<ProductVO> ProductDetail(String Ptitle) {
-        return productDAO.ProductDetail(Ptitle);
+    public List<ProductVO> ProductDetail(String ptitle) {
+        return productDAO.ProductDetail(ptitle);
 
     }
 
@@ -44,8 +44,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductReviewVO> ReviewList(int Pidx) {
-        return productDAO.ReviewList(Pidx);
+    public List<ProductReviewVO> ReviewList(int pidx) {
+        return productDAO.ReviewList(pidx);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String dateCheck(ProductReviewVO Rwdate) {
-        return productDAO.dateCheck(Rwdate);
+    public String dateCheck(ProductReviewVO rwdate) {
+        return productDAO.dateCheck(rwdate);
     }
 
 

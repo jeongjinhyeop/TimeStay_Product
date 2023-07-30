@@ -4,49 +4,49 @@
     <select id="PcateLength" resultType="String" parameterType="String">
         select distinct b.Pcategory
         from Product a, productcategory b
-        WHERE a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
+        WHERE a.pcategory=b.pcategory and b.pcategorySub=#{pcategorySub} and a.pdelyn='N'
     </select>
     <select id="Pcategory" resultType="String" parameterType="String">
         select distinct b.Pcategory
         from Product a, productcategory b
-        WHERE  a.Pcategory=b.Pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
+        WHERE  a.pcategory=b.pcategory and b.pcategorySub=#{pcategorySub} and a.pdelyn='N'
     </select>
     <select id="PcategoryidxTest" resultType="ProductVO" parameterType="ProductVO">
         select a.*,b.pcategorySub
         from Product a , Productcategory b
-        WHERE a.Pcategoryidx=#{Pcategoryidx} and b.pcategory=a.pcategory and b.PcategorySub=#{PcategorySub} and a.pdelyn='N'
+        WHERE a.pcategoryidx=#{pcategoryidx} and b.pcategory=a.pcategory and b.pcategorySub=#{pcategorySub} and a.pdelyn='N'
     </select>
     <select id="ProductDetail" resultType="ProductVO" parameterType="ProductVO">
         select a.*,b.pcategorySub
         from Product a , Productcategory b
-        WHERE b.pcategory=a.pcategory and a.Ptitle=#{Ptitle} and a.pdelyn='N'
+        WHERE b.pcategory=a.pcategory and a.ptitle=#{ptitle} and a.pdelyn='N'
     </select>
     <insert id="InsertReview" parameterType="ProductReviewVO">
             <![CDATA[
 	        INSERT INTO ProductReview VALUES(
-				Review_seq.nextval,#{Userid},#{Pidx},#{Rtext},#{Rscore}, 'N','xx',sysdate,null)
+				Review_seq.nextval,#{userid},#{pidx},#{rtext},#{rscore}, 'N','xx',sysdate,null)
 
 	        ]]>
-        <selectKey order= "AFTER" resultType="integer" keyProperty="Ridx">
-            SELECT MAX(Ridx) from ProductReview
+        <selectKey order= "AFTER" resultType="integer" keyProperty="ridx">
+            SELECT MAX(ridx) from ProductReview
         </selectKey>
     </insert>
     <select id="ReviewList" resultType="ProductReviewVO" parameterType="Integer">
-        select * from ProductReview where Pidx=#{Pidx} order by Ridx desc
+        select * from ProductReview where pidx=#{pidx} order by ridx desc
     </select>
     <delete id="delReview" parameterType="ProductReviewVO">
         DELETE FROM ProductReview
         WHERE
-        Ridx=#{Ridx} and Pidx=#{Pidx} and Userid='admin'
+        ridx=#{ridx} and pidx=#{pidx} and userid='admin'
     </delete>
     <select id="dateCheck" resultType="String" parameterType="ProductReviewVO">
-        select Rwdate from ProductReview where Ridx=#{Ridx} and Pidx=#{Pidx} and Userid='admin'
+        select rwdate from ProductReview where ridx=#{ridx} and pidx=#{pidx} and userid='admin'
     </select>
     <update id="upReview" parameterType="ProductReviewVO">
         update  ProductReview
         set
-        Rtext=#{Rtext},Rscore=#{Rscore} ,Rwdate=sysdate
+        rtext=#{rtext},rscore=#{rscore} ,Rwdate=sysdate
         where
-        Ridx=#{Ridx} and Pidx=#{Pidx}
+        ridx=#{ridx} and pidx=#{pidx}
     </update>
 </mapper>

@@ -39,29 +39,27 @@
             <div class="modal_body">
               <div class="modal_close"><button class="modal_close_btn"><img src="${pageContext.request.contextPath}/resources/images/cancle.png" alt=""></button></div>
               <h2>Review</h2>
-              <form name="insert" action="/Reviews/{Umail}">
-                <span class="star-input">
-                  <span class="input">
-                      <input type="radio" name="Rscore" value="1" id="p1">
-                      <label id="p1" for="p1">1/5</label>
-                      <input type="radio" name="Rscore" value="2" id="p2">
-                      <label id="p2" for="p2">2/5</label>
-                      <input type="radio" name="Rscore" value="3" id="p3">
-                      <label id="p3" for="p3">3/5</label>
-                      <input type="radio" name="Rscore" value="4" id="p4">
-                      <label id="p4" for="p4">4/5</label>
-                      <input type="radio" name="Rscore" value="5" id="p5">
-                      <label id="p5" for="p5">5/5</label>
-                    </span>
-                    <output for="Rscore"><b>0/5</b></output>						
-                </span>
-                <c:forEach var="p" items="${pitem}">
-                <td><input name="Pidx" value="${p.pidx}"></td> 
-                </c:forEach>
-                <input  name="Ridx" value="0">
-                <textarea name="Rtext" placeholder="리뷰를 작성해주세요"></textarea>
-                <button type="button" id="insertReview">작성</button>                  
-              </form>
+              <span class="star-input">
+                <span class="input">
+                    <input type="radio" name="rscore" value="1" id="p1">
+                    <label id="p1" for="p1">1/5</label>
+                    <input type="radio" name="rscore" value="2" id="p2">
+                    <label id="p2" for="p2">2/5</label>
+                    <input type="radio" name="rscore" value="3" id="p3">
+                    <label id="p3" for="p3">3/5</label>
+                    <input type="radio" name="rscore" value="4" id="p4">
+                    <label id="p4" for="p4">4/5</label>
+                    <input type="radio" name="rscore" value="5" id="p5">
+                    <label id="p5" for="p5">5/5</label>
+                  </span>
+                  <output for="rscore"><b>0/5</b></output>						
+              </span>
+              <c:forEach var="p" items="${pitem}">
+              <td><input name="pidx" value="${p.pidx}"></td> 
+              </c:forEach>
+              <input  name="ridx" value="0">
+              <textarea name="rtext"  value="11">11</textarea>
+              <button type="button" id="insertReview">작성</button>                  
             </div>           
           </div>            
           <button class="btn-open-popup">리뷰작성</button>
@@ -69,7 +67,7 @@
       <table class="pd_review">
         <tbody class="table_body">
           <tr>
-            <th style="width: 10%;" value="${Umail}">글 번호</th>
+            <th style="width: 10%;" value="${umail}">글 번호</th>
             <th style="width: 45%;">내용</th>
             <th style="width: 15%;">평점</th>
             <th style="width: 15%;">작성자</th>
@@ -87,15 +85,15 @@
                   <td name="rscore">${r.rscore}</td>
                   <td name="userid">${r.userid}</td>
                   <td name="rwdate">${r.rwdate}</td>
-                  <input type="hidden" name="Pidx" value="${r.pidx}">
-                  <input type="hidden" name="Ridx" value="${r.ridx}">
+                  <input type="hidden" name="pidx" value="${r.pidx}">
+                  <input type="hidden" name="ridx" value="${r.ridx}">
                 </form:form>
               </tr>
           </c:forEach>
         </tbody>
       </table>
     </div>
-    <input type="hidden" id="P" value="${Ptitle}">
+    <input type="hidden" id="P" value="${ptitle}">
     <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
     <h3>반품/환불</h3>
     <h3>교환 및 환불 안내</h3>
@@ -105,16 +103,17 @@
     <h3>교환/환불 정책</h3>
     <div></div>
     </div>
-    <p>${Umail}</p>
+    <p>${umail} </p>
   </div>
   <%@ include file="../../resources/js/ProductReview.js" %>
   <script>
     var title=$('#P').val();
-    var id='${Umail}';
+    console.log(title)
+    var id='${umail}';
     console.log(id);
     $(document).ready(function (){	
 			$.ajax({
-				type:"Get",//요청만 다르게 url는 똑같음
+				type:"GET",//요청만 다르게 url는 똑같음
         contentType:'application/json;charset=utf-8',
 				url:"${pageContext.request.contextPath}/products/Reviews/"+title,	
         error:function(error,status,msg){
@@ -137,18 +136,24 @@
 				}
 			});//ajax
 		});//click
-    var title=$('#P').val();
-    var id='${Umail}';
+    var title = $('#P').val();
+    var id = '${umail}';
+  
+    var params = {
+      userId: id,
+      pidx: "4",
+      ridx: $("input[name='ridx']").val(),
+      rscore: $("input[name='rscore']").val(),
+      rtext: $("textarea[name='rtext']").val()
+    }
     $('#insertReview').click(function(){	
-    
 			$.ajax({
-				type:"post",//요청만 다르게 url는 똑같음
+				type:"POST",//요청만 다르게 url는 똑같음
         contentType:'application/json;charset=utf-8',
 				url:"${pageContext.request.contextPath}/products/Reviews/"+id,
-        data:	JSON.stringify($("form[name=insert]").serialize()),
+        data:	JSON.stringify(params),
         error:function(error,status,msg){
-			  alert("상태코드 " + status + "에러메시지" + msg );
-        
+			    alert("상태코드 " + status + "에러메시지" + msg );
 		    },
 				success:function(data){
           alert("Review insert")		

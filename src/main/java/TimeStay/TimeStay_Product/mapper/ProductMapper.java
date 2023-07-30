@@ -13,13 +13,13 @@ import java.util.Objects;
 @Mapper
 public interface ProductMapper {
 
-    public List<String> PcateLength(String PcategorySub);
-    public List<String> Pcategory(String PcategorySub);
-    public List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub);
-    public List<ProductVO> ProductDetail(String Ptitle);
+    public List<String> PcateLength(String pcategorySub);
+    public List<String> Pcategory(String pcategorySub);
+    public List<ProductVO> PcategoryidxTest(int pcategoryidx,String pcategorySub);
+    public List<ProductVO> ProductDetail(String ptitle);
     public int InsertReview(ProductReviewVO rvo);
-    public List<ProductReviewVO> ReviewList(int Pidx);
+    public List<ProductReviewVO> ReviewList(int pidx);
     public int delReview(ProductReviewVO dvo);
     public int upReview(ProductReviewVO uvo);
-    public String dateCheck(ProductReviewVO Rwdate);
+    public String dateCheck(ProductReviewVO rwdate);
 }

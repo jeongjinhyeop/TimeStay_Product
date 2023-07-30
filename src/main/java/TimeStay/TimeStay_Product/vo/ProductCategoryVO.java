@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductCategoryVO {
-    private String Pcategory;
-    private String PcategorySub;
-    private int Pcategoryidx;
-    private String Ptitle;
+    private String pcategory;
+    private String pcategorySub;
+    private int pcategoryidx;
+    private String ptitle;
 }

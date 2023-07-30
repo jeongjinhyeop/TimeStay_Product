@@ -26,24 +26,24 @@ public class ProductController {
     @Autowired
     private final ProductServiceImpl productServiceImpl;
 
-    @GetMapping("/{PcategorySub}")
-    public  String product(Model model,@PathVariable String PcategorySub) {
+    @GetMapping("/{pcategorySub}")
+    public  String product(Model model,@PathVariable String pcategorySub) {
         ArrayList<Object> pv =new ArrayList<>();
-        int len=productServiceImpl.PcateLength(PcategorySub).size();
+        int len=productServiceImpl.PcateLength(pcategorySub).size();
         for (int i = 1; i <=len; i++) {
-            pv.add(productServiceImpl.PcategoryidxTest(i,PcategorySub));
+            pv.add(productServiceImpl.PcategoryidxTest(i,pcategorySub));
         }
-        List<String> cate=productServiceImpl.Pcategory(PcategorySub);
+        List<String> cate=productServiceImpl.Pcategory(pcategorySub);
         model.addAttribute("pv",pv);
         model.addAttribute("cate",cate);
         return "Product";
     }
-    @GetMapping("/{PcategorySub}/{Ptitle}")
-    public  String productDetail(Model model,@PathVariable String PcategorySub,@PathVariable String Ptitle,ProductReviewVO rvo
+    @GetMapping("/{pcategorySub}/{ptitle}")
+    public  String productDetail(Model model,@PathVariable String pcategorySub,@PathVariable String ptitle,ProductReviewVO rvo
                                   ,HttpSession session) {
-        List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
+        List<ProductVO> pitem = productServiceImpl.ProductDetail(ptitle);
         String id =(String)session.getAttribute("UMAIL");
-        model.addAttribute("Umail",id);
+        model.addAttribute("umail",id);
         model.addAttribute("pitem",pitem);
         return "ProductDetail";
     }
@@ -63,26 +63,5 @@ public class ProductController {
     }*/
 
 
-    //rest api 적용해보기
-    @GetMapping("/Reviews/{Ptitle}")
-    @ResponseBody
-    public List<ProductReviewVO> getReview(@PathVariable String Ptitle){
-        List<ProductVO> pitem = productServiceImpl.ProductDetail(Ptitle);
-        return productServiceImpl.ReviewList(pitem.get(0).getPidx());
-    }
-    @PostMapping("/Reviews/{id}")
-    @ResponseBody
-    public int postReview(@PathVariable String id, @RequestBody ProductReviewVO review){
-        ProductReviewVO  productReviewVO =new ProductReviewVO();
-        review.setUserid(id);
-//        review.setPidx(4);
-////        review.setRscore(4);
-//        review.setRtext("123");
-//        review.setRdelyn("N");
-        System.out.println(review);
-
-
-        return productServiceImpl.InsertReview(review);
-    }
 
 }

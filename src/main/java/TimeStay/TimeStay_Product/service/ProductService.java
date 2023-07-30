@@ -8,19 +8,19 @@ import java.util.List;
 
 public interface ProductService {
 
-     List<String> PcateLength(String PcategorySub);
+     List<String> PcateLength(String pcategorySub);
 
-     List<String> Pcategory(String PcategorySub);
+     List<String> Pcategory(String pcategorySub);
 
-     List<ProductVO> PcategoryidxTest(int Pcategoryidx,String PcategorySub);
+     List<ProductVO> PcategoryidxTest(int pcategoryidx,String pcategorySub);
 
-     List<ProductVO> ProductDetail(String Ptitle);
+     List<ProductVO> ProductDetail(String ptitle);
 
      int InsertReview(ProductReviewVO rvo);
 
-     List<ProductReviewVO> ReviewList(int Pidx);
+     List<ProductReviewVO> ReviewList(int pidx);
      int delReview(ProductReviewVO dvo);
      int upReview(ProductReviewVO uvo);
-     public String dateCheck(ProductReviewVO Rwdate);
+     public String dateCheck(ProductReviewVO rwdate);
 
 }
